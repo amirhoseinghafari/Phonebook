@@ -1,2 +1,2 @@
 # Phonebook
-in this repository we want design a phonebook
+in this a free repository, we want design a phonebook just for learning.
