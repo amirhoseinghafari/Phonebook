@@ -1,0 +1,13 @@
+D:\MyProgramC#\Phonebook\phonebook\phonebook\bin\Debug\Telbook.mdf
+D:\MyProgramC#\Phonebook\phonebook\phonebook\bin\Debug\Telbook_log.ldf
+D:\MyProgramC#\Phonebook\phonebook\phonebook\bin\Debug\phonebook.exe.config
+D:\MyProgramC#\Phonebook\phonebook\phonebook\bin\Debug\phonebook.exe
+D:\MyProgramC#\Phonebook\phonebook\phonebook\bin\Debug\phonebook.pdb
+D:\MyProgramC#\Phonebook\phonebook\phonebook\obj\Debug\phonebook.csproj.AssemblyReference.cache
+D:\MyProgramC#\Phonebook\phonebook\phonebook\obj\Debug\phonebook.csproj.SuggestedBindingRedirects.cache
+D:\MyProgramC#\Phonebook\phonebook\phonebook\obj\Debug\phonebook.Form1.resources
+D:\MyProgramC#\Phonebook\phonebook\phonebook\obj\Debug\phonebook.Properties.Resources.resources
+D:\MyProgramC#\Phonebook\phonebook\phonebook\obj\Debug\phonebook.csproj.GenerateResource.cache
+D:\MyProgramC#\Phonebook\phonebook\phonebook\obj\Debug\phonebook.csproj.CoreCompileInputs.cache
+D:\MyProgramC#\Phonebook\phonebook\phonebook\obj\Debug\phonebook.exe
+D:\MyProgramC#\Phonebook\phonebook\phonebook\obj\Debug\phonebook.pdb
