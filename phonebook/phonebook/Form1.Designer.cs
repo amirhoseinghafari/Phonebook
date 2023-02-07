@@ -68,6 +68,7 @@
             this.txtname.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.txtname.Location = new System.Drawing.Point(126, 29);
             this.txtname.Name = "txtname";
+            this.txtname.ReadOnly = true;
             this.txtname.Size = new System.Drawing.Size(342, 28);
             this.txtname.TabIndex = 1;
             // 
@@ -76,6 +77,7 @@
             this.txtfamily.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.txtfamily.Location = new System.Drawing.Point(126, 84);
             this.txtfamily.Name = "txtfamily";
+            this.txtfamily.ReadOnly = true;
             this.txtfamily.Size = new System.Drawing.Size(342, 28);
             this.txtfamily.TabIndex = 3;
             // 
@@ -94,6 +96,7 @@
             this.txttell.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.txttell.Location = new System.Drawing.Point(126, 142);
             this.txttell.Name = "txttell";
+            this.txttell.ReadOnly = true;
             this.txttell.Size = new System.Drawing.Size(342, 28);
             this.txttell.TabIndex = 5;
             // 
@@ -113,6 +116,7 @@
             this.txtaddress.Location = new System.Drawing.Point(126, 188);
             this.txtaddress.Multiline = true;
             this.txtaddress.Name = "txtaddress";
+            this.txtaddress.ReadOnly = true;
             this.txtaddress.Size = new System.Drawing.Size(342, 103);
             this.txtaddress.TabIndex = 7;
             // 
@@ -135,6 +139,7 @@
             this.btnnew.TabIndex = 8;
             this.btnnew.Text = "New";
             this.btnnew.UseVisualStyleBackColor = true;
+            this.btnnew.Click += new System.EventHandler(this.btnnew_Click);
             // 
             // btndel
             // 
@@ -158,6 +163,7 @@
             // 
             // btnsave
             // 
+            this.btnsave.Enabled = false;
             this.btnsave.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.btnsave.Location = new System.Drawing.Point(149, 331);
             this.btnsave.Name = "btnsave";
@@ -165,6 +171,7 @@
             this.btnsave.TabIndex = 11;
             this.btnsave.Text = "Save";
             this.btnsave.UseVisualStyleBackColor = true;
+            this.btnsave.Click += new System.EventHandler(this.btnsave_Click);
             // 
             // btnnext
             // 
@@ -175,6 +182,7 @@
             this.btnnext.TabIndex = 15;
             this.btnnext.Text = "Next";
             this.btnnext.UseVisualStyleBackColor = true;
+            this.btnnext.Click += new System.EventHandler(this.btnnext_Click);
             // 
             // btnpre
             // 
@@ -185,6 +193,7 @@
             this.btnpre.TabIndex = 14;
             this.btnpre.Text = "Pre...";
             this.btnpre.UseVisualStyleBackColor = true;
+            this.btnpre.Click += new System.EventHandler(this.btnpre_Click);
             // 
             // btnlast
             // 
@@ -195,6 +204,7 @@
             this.btnlast.TabIndex = 13;
             this.btnlast.Text = "Last";
             this.btnlast.UseVisualStyleBackColor = true;
+            this.btnlast.Click += new System.EventHandler(this.btnlast_Click);
             // 
             // btnfirst
             // 
@@ -205,6 +215,7 @@
             this.btnfirst.TabIndex = 12;
             this.btnfirst.Text = "First";
             this.btnfirst.UseVisualStyleBackColor = true;
+            this.btnfirst.Click += new System.EventHandler(this.btnfirst_Click);
             // 
             // label5
             // 
@@ -255,13 +266,17 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(485, 148);
+            this.dataGridView1.Location = new System.Drawing.Point(494, 148);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.Size = new System.Drawing.Size(551, 280);
             this.dataGridView1.TabIndex = 21;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
             // Form1
             // 
