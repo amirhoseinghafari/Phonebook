@@ -58,6 +58,8 @@ namespace phonebook
             txttell.DataBindings.Add("text", ds, "T1.Phoneno");
             txtaddress.DataBindings.Clear();
             txtaddress.DataBindings.Add("text", ds, "T1.address");
+            txtID.DataBindings.Clear();
+            txtID.DataBindings.Add("text", ds, "T1.ID");
             //define CurrencyManager for manage data
             // تعریف کارنسی برای مدیریت داده ها داخل دیتابیس
             cr = (CurrencyManager)this.BindingContext[ds, "T1"];
@@ -125,6 +127,52 @@ namespace phonebook
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             cr.Position = e.RowIndex;
+        }
+        //This code is for Btn delete 
+        //نوشتن کد دکمه پاک کردن 
+        private void btndel_Click(object sender, EventArgs e)
+        {
+            DialogResult x;
+            x = MessageBox.Show("Do you want to delete " + txtname.Text + " " +txtfamily.Text , "Delete...",MessageBoxButtons.YesNo);
+            if (x == DialogResult.No)
+                return;
+            SqlCommand c2 = new SqlCommand();
+            c2.CommandText = "delete from Tbltell where ID = @P1";
+            c2.Parameters.AddWithValue("P1", txtID.Text);
+            c2.Connection = conn;
+            c2.ExecuteNonQuery();
+            fillgrid();
+        }
+
+        private void btnedit_Click(object sender, EventArgs e)
+        {
+            if (btnedit.Text=="Edit")
+            {
+                txtname.ReadOnly = false;
+                txtfamily.ReadOnly = false;
+                txtaddress.ReadOnly = false;
+                txttell.ReadOnly = false;
+                btnedit.Text = "Apply";
+                txtname.Focus();
+            }
+            else
+            {
+                SqlCommand c3 = new SqlCommand();
+                c3.CommandText = "Update Tbltell set firstname = @p1 , lastname = @p2 , phoneno = @p3 , address = @p4 where ID = @p5";
+                c3.Parameters.AddWithValue("p1", txtname.Text);
+                c3.Parameters.AddWithValue("p2", txtfamily.Text);
+                c3.Parameters.AddWithValue("p3", txttell.Text);
+                c3.Parameters.AddWithValue("p4", txtaddress.Text);
+                c3.Parameters.AddWithValue("p5", txtID.Text);
+                c3.Connection = conn;
+                c3.ExecuteNonQuery();
+                fillgrid();
+                txtname.ReadOnly = true;
+                txtfamily.ReadOnly = true;
+                txtaddress.ReadOnly = true;
+                txttell.ReadOnly = true;
+                btnedit.Text = "Edit";
+            }
         }
     }
 }

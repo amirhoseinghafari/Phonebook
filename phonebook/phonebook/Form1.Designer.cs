@@ -50,6 +50,8 @@
             this.txtsearch = new System.Windows.Forms.TextBox();
             this.btnsearch = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtID = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -150,6 +152,7 @@
             this.btndel.TabIndex = 9;
             this.btndel.Text = "Del";
             this.btndel.UseVisualStyleBackColor = true;
+            this.btndel.Click += new System.EventHandler(this.btndel_Click);
             // 
             // btnedit
             // 
@@ -160,6 +163,7 @@
             this.btnedit.TabIndex = 10;
             this.btnedit.Text = "Edit";
             this.btnedit.UseVisualStyleBackColor = true;
+            this.btnedit.Click += new System.EventHandler(this.btnedit_Click);
             // 
             // btnsave
             // 
@@ -278,11 +282,32 @@
             this.dataGridView1.TabIndex = 21;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Tahoma", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.label7.Location = new System.Drawing.Point(474, 35);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(45, 22);
+            this.label7.TabIndex = 22;
+            this.label7.Text = "ID :";
+            // 
+            // txtID
+            // 
+            this.txtID.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.txtID.Location = new System.Drawing.Point(525, 33);
+            this.txtID.Name = "txtID";
+            this.txtID.ReadOnly = true;
+            this.txtID.Size = new System.Drawing.Size(86, 28);
+            this.txtID.TabIndex = 23;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1057, 440);
+            this.Controls.Add(this.txtID);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.btnsearch);
             this.Controls.Add(this.txtsearch);
@@ -338,6 +363,8 @@
         private System.Windows.Forms.TextBox txtsearch;
         private System.Windows.Forms.Button btnsearch;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox txtID;
     }
 }
 
