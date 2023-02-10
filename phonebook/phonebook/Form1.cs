@@ -22,6 +22,7 @@ namespace phonebook
         SqlDataAdapter ad = new SqlDataAdapter();
         DataSet ds = new DataSet();
         CurrencyManager cr;
+        int beforedit;
         public Form1()
         {
             InitializeComponent();
@@ -68,25 +69,29 @@ namespace phonebook
         //برای رفتن به اطلاعات سطر بعدی در دیتابیس
         private void btnnext_Click(object sender, EventArgs e)
         {
-            cr.Position++;
+            //cr.Position++;
+            setcurrentrec(cr.Position + 1);
         }
         //for go to first data
         //برای رفتن به اولین سطر در دیتابیس
         private void btnfirst_Click(object sender, EventArgs e)
         {
-            cr.Position = 0;
+            // cr.Position = 0;
+            setcurrentrec(0);
         }
         //for go to per...
         //برای رفتن به اطلاعات سطر قبلی در دیتابیس
         private void btnpre_Click(object sender, EventArgs e)
         {
-            cr.Position--;
+            //cr.Position--;
+            setcurrentrec(cr.Position - 1);
         }
         //for go to last data
         //برای رفتن به سطر قبلی در دیتابیس 
         private void btnlast_Click(object sender, EventArgs e)
         {
-            cr.Position = cr.Count - 1;
+            //cr.Position = cr.Count - 1;
+            setcurrentrec(cr.Count - 1);
         }
         //for cleaning textbox and add new person
         private void btnnew_Click(object sender, EventArgs e)
@@ -143,7 +148,12 @@ namespace phonebook
             c2.ExecuteNonQuery();
             fillgrid();
         }
-
+        /// <summary>
+        /// This Event is for Btn Edit
+        /// این کد برای دکمه ویرایش میباشد که برای ذخیره تغییرات از خود دکمه استفاده کردیم
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnedit_Click(object sender, EventArgs e)
         {
             if (btnedit.Text=="Edit")
@@ -154,6 +164,7 @@ namespace phonebook
                 txttell.ReadOnly = false;
                 btnedit.Text = "Apply";
                 txtname.Focus();
+                beforedit = cr.Position;
             }
             else
             {
@@ -167,12 +178,46 @@ namespace phonebook
                 c3.Connection = conn;
                 c3.ExecuteNonQuery();
                 fillgrid();
+                setcurrentrec(beforedit);
                 txtname.ReadOnly = true;
                 txtfamily.ReadOnly = true;
                 txtaddress.ReadOnly = true;
                 txttell.ReadOnly = true;
                 btnedit.Text = "Edit";
             }
+        }
+        /// <summary>
+        /// This Code is for Btn Search and use Method fillgird
+        /// این کد برای دکمه سرچ میباشد که از متد Fillgrid در آن استفاده شده
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnsearch_Click(object sender, EventArgs e)
+        {
+            string a;
+            a = "select * from Tbltell where " + cmbfield.Text + " like '" + txtsearch.Text + "%'";
+            fillgrid(a);
+        }
+        //This code is for dynamics search 
+        //این کد برای پویایی در سرچ میباشد که هر دفعه لازم نباشد دکمه سرچ را بزنند
+        private void txtsearch_TextChanged(object sender, EventArgs e)
+        {
+            btnsearch_Click(null, null);
+        }
+        //In this Event, we want to specify the current record and also specify the row in the grid
+        //در این زیربرنامه میخواهیم رکورد جاری را مشخص کنیم وهمچنین در گرید سطر را مشخص کنیم
+        void setcurrentrec(int currec)
+        {
+            if (currec < 0 || currec >= cr.Count)
+                return;
+            cr.Position = currec;
+            dataGridView1.CurrentCell = dataGridView1.Rows[currec].Cells[dataGridView1.CurrentCell.ColumnIndex];
+        }
+        //For work Btn up & down in keyword 
+        //برای کار کردن دگمه های بالا و پایین و نمایش درست اطلاعات در جعبه متن ها 
+        private void dataGridView1_KeyUp(object sender, KeyEventArgs e)
+        {
+            setcurrentrec(dataGridView1.CurrentCell.RowIndex);
         }
     }
 }

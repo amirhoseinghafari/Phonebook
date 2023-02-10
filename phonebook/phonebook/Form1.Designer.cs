@@ -233,8 +233,15 @@
             // 
             // cmbfield
             // 
+            this.cmbfield.DisplayMember = "Lastname";
+            this.cmbfield.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbfield.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.cmbfield.FormattingEnabled = true;
+            this.cmbfield.Items.AddRange(new object[] {
+            "Firstname",
+            "Lastname",
+            "phoneno",
+            "address"});
             this.cmbfield.Location = new System.Drawing.Point(829, 28);
             this.cmbfield.Name = "cmbfield";
             this.cmbfield.Size = new System.Drawing.Size(180, 29);
@@ -257,6 +264,7 @@
             this.txtsearch.Name = "txtsearch";
             this.txtsearch.Size = new System.Drawing.Size(216, 28);
             this.txtsearch.TabIndex = 19;
+            this.txtsearch.TextChanged += new System.EventHandler(this.txtsearch_TextChanged);
             // 
             // btnsearch
             // 
@@ -267,6 +275,7 @@
             this.btnsearch.TabIndex = 20;
             this.btnsearch.Text = "Search";
             this.btnsearch.UseVisualStyleBackColor = true;
+            this.btnsearch.Click += new System.EventHandler(this.btnsearch_Click);
             // 
             // dataGridView1
             // 
@@ -281,6 +290,7 @@
             this.dataGridView1.Size = new System.Drawing.Size(551, 280);
             this.dataGridView1.TabIndex = 21;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
+            this.dataGridView1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.dataGridView1_KeyUp);
             // 
             // label7
             // 
