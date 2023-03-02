@@ -52,7 +52,11 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.label7 = new System.Windows.Forms.Label();
             this.txtID = new System.Windows.Forms.TextBox();
+            this.pic1 = new System.Windows.Forms.PictureBox();
+            this.BtnBrowse = new System.Windows.Forms.Button();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -77,7 +81,7 @@
             // txtfamily
             // 
             this.txtfamily.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.txtfamily.Location = new System.Drawing.Point(126, 84);
+            this.txtfamily.Location = new System.Drawing.Point(126, 90);
             this.txtfamily.Name = "txtfamily";
             this.txtfamily.ReadOnly = true;
             this.txtfamily.Size = new System.Drawing.Size(342, 28);
@@ -87,7 +91,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Tahoma", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label2.Location = new System.Drawing.Point(25, 84);
+            this.label2.Location = new System.Drawing.Point(25, 90);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(80, 22);
             this.label2.TabIndex = 2;
@@ -96,7 +100,7 @@
             // txttell
             // 
             this.txttell.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.txttell.Location = new System.Drawing.Point(126, 142);
+            this.txttell.Location = new System.Drawing.Point(126, 155);
             this.txttell.Name = "txttell";
             this.txttell.ReadOnly = true;
             this.txttell.Size = new System.Drawing.Size(342, 28);
@@ -106,7 +110,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Tahoma", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label3.Location = new System.Drawing.Point(25, 148);
+            this.label3.Location = new System.Drawing.Point(25, 161);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(54, 22);
             this.label3.TabIndex = 4;
@@ -115,7 +119,7 @@
             // txtaddress
             // 
             this.txtaddress.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.txtaddress.Location = new System.Drawing.Point(126, 188);
+            this.txtaddress.Location = new System.Drawing.Point(126, 282);
             this.txtaddress.Multiline = true;
             this.txtaddress.Name = "txtaddress";
             this.txtaddress.ReadOnly = true;
@@ -126,7 +130,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Tahoma", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label4.Location = new System.Drawing.Point(25, 205);
+            this.label4.Location = new System.Drawing.Point(25, 279);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(93, 22);
             this.label4.TabIndex = 6;
@@ -135,7 +139,7 @@
             // btnnew
             // 
             this.btnnew.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.btnnew.Location = new System.Drawing.Point(41, 331);
+            this.btnnew.Location = new System.Drawing.Point(41, 439);
             this.btnnew.Name = "btnnew";
             this.btnnew.Size = new System.Drawing.Size(100, 41);
             this.btnnew.TabIndex = 8;
@@ -146,7 +150,7 @@
             // btndel
             // 
             this.btndel.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.btndel.Location = new System.Drawing.Point(368, 331);
+            this.btndel.Location = new System.Drawing.Point(368, 439);
             this.btndel.Name = "btndel";
             this.btndel.Size = new System.Drawing.Size(100, 41);
             this.btndel.TabIndex = 9;
@@ -157,7 +161,7 @@
             // btnedit
             // 
             this.btnedit.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.btnedit.Location = new System.Drawing.Point(256, 331);
+            this.btnedit.Location = new System.Drawing.Point(256, 439);
             this.btnedit.Name = "btnedit";
             this.btnedit.Size = new System.Drawing.Size(100, 41);
             this.btnedit.TabIndex = 10;
@@ -169,7 +173,7 @@
             // 
             this.btnsave.Enabled = false;
             this.btnsave.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.btnsave.Location = new System.Drawing.Point(149, 331);
+            this.btnsave.Location = new System.Drawing.Point(149, 439);
             this.btnsave.Name = "btnsave";
             this.btnsave.Size = new System.Drawing.Size(100, 41);
             this.btnsave.TabIndex = 11;
@@ -180,7 +184,7 @@
             // btnnext
             // 
             this.btnnext.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.btnnext.Location = new System.Drawing.Point(149, 387);
+            this.btnnext.Location = new System.Drawing.Point(149, 495);
             this.btnnext.Name = "btnnext";
             this.btnnext.Size = new System.Drawing.Size(100, 41);
             this.btnnext.TabIndex = 15;
@@ -191,7 +195,7 @@
             // btnpre
             // 
             this.btnpre.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.btnpre.Location = new System.Drawing.Point(256, 387);
+            this.btnpre.Location = new System.Drawing.Point(256, 495);
             this.btnpre.Name = "btnpre";
             this.btnpre.Size = new System.Drawing.Size(100, 41);
             this.btnpre.TabIndex = 14;
@@ -202,7 +206,7 @@
             // btnlast
             // 
             this.btnlast.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.btnlast.Location = new System.Drawing.Point(368, 387);
+            this.btnlast.Location = new System.Drawing.Point(368, 495);
             this.btnlast.Name = "btnlast";
             this.btnlast.Size = new System.Drawing.Size(100, 41);
             this.btnlast.TabIndex = 13;
@@ -213,7 +217,7 @@
             // btnfirst
             // 
             this.btnfirst.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.btnfirst.Location = new System.Drawing.Point(41, 387);
+            this.btnfirst.Location = new System.Drawing.Point(41, 495);
             this.btnfirst.Name = "btnfirst";
             this.btnfirst.Size = new System.Drawing.Size(100, 41);
             this.btnfirst.TabIndex = 12;
@@ -282,7 +286,7 @@
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(494, 148);
+            this.dataGridView1.Location = new System.Drawing.Point(514, 276);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 51;
@@ -311,11 +315,39 @@
             this.txtID.Size = new System.Drawing.Size(86, 28);
             this.txtID.TabIndex = 23;
             // 
+            // pic1
+            // 
+            this.pic1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pic1.Location = new System.Drawing.Point(525, 75);
+            this.pic1.Name = "pic1";
+            this.pic1.Size = new System.Drawing.Size(119, 133);
+            this.pic1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pic1.TabIndex = 24;
+            this.pic1.TabStop = false;
+            // 
+            // BtnBrowse
+            // 
+            this.BtnBrowse.Enabled = false;
+            this.BtnBrowse.Font = new System.Drawing.Font("Tahoma", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.BtnBrowse.Location = new System.Drawing.Point(525, 221);
+            this.BtnBrowse.Name = "BtnBrowse";
+            this.BtnBrowse.Size = new System.Drawing.Size(119, 38);
+            this.BtnBrowse.TabIndex = 25;
+            this.BtnBrowse.Text = "Browse...";
+            this.BtnBrowse.UseVisualStyleBackColor = true;
+            this.BtnBrowse.Click += new System.EventHandler(this.BtnBrowse_Click);
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1057, 440);
+            this.ClientSize = new System.Drawing.Size(1082, 568);
+            this.Controls.Add(this.BtnBrowse);
+            this.Controls.Add(this.pic1);
             this.Controls.Add(this.txtID);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.dataGridView1);
@@ -344,6 +376,7 @@
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -375,6 +408,9 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtID;
+        private System.Windows.Forms.PictureBox pic1;
+        private System.Windows.Forms.Button BtnBrowse;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }
 

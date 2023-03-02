@@ -61,6 +61,8 @@ namespace phonebook
             txtaddress.DataBindings.Add("text", ds, "T1.address");
             txtID.DataBindings.Clear();
             txtID.DataBindings.Add("text", ds, "T1.ID");
+            pic1.DataBindings.Clear();
+            pic1.DataBindings.Add("imagelocation", ds , "T1.picurl");
             //define CurrencyManager for manage data
             // تعریف کارنسی برای مدیریت داده ها داخل دیتابیس
             cr = (CurrencyManager)this.BindingContext[ds, "T1"];
@@ -106,20 +108,23 @@ namespace phonebook
             txtaddress.Text = "";
             btnnew.Enabled = false;
             btnsave.Enabled = true;
+            BtnBrowse.Enabled = true;
             txtname.Focus();
         }
         //for save textboxes and add to database whith command
         private void btnsave_Click(object sender, EventArgs e)
         {
             SqlCommand c1 = new SqlCommand();
-            c1.CommandText = "insert into Tbltell values (@P1,@P2,@P3,@P4)";
+            c1.CommandText = "insert into Tbltell values (@P1,@P2,@P3,@P4,@P5)";
             c1.Parameters.AddWithValue("P1",txtname.Text);
             c1.Parameters.AddWithValue("P2", txtfamily.Text);
             c1.Parameters.AddWithValue("P3", txttell.Text);
             c1.Parameters.AddWithValue("P4", txtaddress.Text);
+            c1.Parameters.AddWithValue("P5", pic1.ImageLocation);
             c1.Connection = conn;
             c1.ExecuteNonQuery();
             btnsave.Enabled = false;
+            BtnBrowse.Enabled = false;
             btnnew.Enabled = true;
             txtname.ReadOnly = true;
             txtfamily.ReadOnly = true;
@@ -218,6 +223,15 @@ namespace phonebook
         private void dataGridView1_KeyUp(object sender, KeyEventArgs e)
         {
             setcurrentrec(dataGridView1.CurrentCell.RowIndex);
+        }
+
+        private void BtnBrowse_Click(object sender, EventArgs e)
+        {
+            DialogResult p;
+            p =openFileDialog1.ShowDialog();
+            if (p == DialogResult.Cancel)
+                return;
+            pic1.ImageLocation = openFileDialog1.FileName;
         }
     }
 }
