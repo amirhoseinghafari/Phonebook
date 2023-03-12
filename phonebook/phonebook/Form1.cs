@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.IO;
 
 
 namespace phonebook
@@ -22,6 +23,7 @@ namespace phonebook
         SqlDataAdapter ad = new SqlDataAdapter();
         DataSet ds = new DataSet();
         CurrencyManager cr;
+        Region x = new Region();
         int beforedit;
         public Form1()
         {
@@ -31,7 +33,7 @@ namespace phonebook
         private void Form1_Load(object sender, EventArgs e)
         {
             //conection to database
-            conn.ConnectionString = @"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename=D:\MyProgramC#\Phonebook\phonebook\phonebook\Telbook.mdf; Integrated Security = True";
+            conn.ConnectionString = @"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename="+Application.StartupPath + @"\Telbook.mdf; Integrated Security = True";
             conn.Open();
             fillgrid();
         }
@@ -120,7 +122,7 @@ namespace phonebook
             c1.Parameters.AddWithValue("P2", txtfamily.Text);
             c1.Parameters.AddWithValue("P3", txttell.Text);
             c1.Parameters.AddWithValue("P4", txtaddress.Text);
-            c1.Parameters.AddWithValue("P5", pic1.ImageLocation);
+            c1.Parameters.AddWithValue("P5", Copypic(pic1.ImageLocation, txtID.Text+txttell.Text));
             c1.Connection = conn;
             c1.ExecuteNonQuery();
             btnsave.Enabled = false;
@@ -167,6 +169,7 @@ namespace phonebook
                 txtfamily.ReadOnly = false;
                 txtaddress.ReadOnly = false;
                 txttell.ReadOnly = false;
+                BtnBrowse.Enabled = true;
                 btnedit.Text = "Apply";
                 txtname.Focus();
                 beforedit = cr.Position;
@@ -174,12 +177,13 @@ namespace phonebook
             else
             {
                 SqlCommand c3 = new SqlCommand();
-                c3.CommandText = "Update Tbltell set firstname = @p1 , lastname = @p2 , phoneno = @p3 , address = @p4 where ID = @p5";
+                c3.CommandText = "Update Tbltell set firstname = @p1 , lastname = @p2 , phoneno = @p3 , address = @p4 , picurl = @p6  where ID = @p5";
                 c3.Parameters.AddWithValue("p1", txtname.Text);
                 c3.Parameters.AddWithValue("p2", txtfamily.Text);
                 c3.Parameters.AddWithValue("p3", txttell.Text);
                 c3.Parameters.AddWithValue("p4", txtaddress.Text);
                 c3.Parameters.AddWithValue("p5", txtID.Text);
+                c3.Parameters.AddWithValue("p6", Copypic(pic1.ImageLocation, txtID.Text + txttell.Text));
                 c3.Connection = conn;
                 c3.ExecuteNonQuery();
                 fillgrid();
@@ -188,6 +192,7 @@ namespace phonebook
                 txtfamily.ReadOnly = true;
                 txtaddress.ReadOnly = true;
                 txttell.ReadOnly = true;
+                BtnBrowse.Enabled = false;
                 btnedit.Text = "Edit";
             }
         }
@@ -224,7 +229,8 @@ namespace phonebook
         {
             setcurrentrec(dataGridView1.CurrentCell.RowIndex);
         }
-
+        //For choose Picture and display that
+        //برای انتخاب کردن و نمایش دادن تصویر مورد نظر 
         private void BtnBrowse_Click(object sender, EventArgs e)
         {
             DialogResult p;
@@ -232,6 +238,47 @@ namespace phonebook
             if (p == DialogResult.Cancel)
                 return;
             pic1.ImageLocation = openFileDialog1.FileName;
+        }
+        //For copy the picture you choose in a directory for keep it
+        //برای ذخیره کردن تصویر در یک مسیر و نگه داری آن 
+         string Copypic(string sourcefile , string key)
+        {
+            if (sourcefile == "") 
+            return "";
+            string curpath;
+            string newpath;
+            curpath = Application.StartupPath + @"\images\";
+            if (Directory.Exists(curpath) == false)
+                Directory.CreateDirectory(curpath);
+            newpath = curpath + key + sourcefile.Substring(sourcefile.LastIndexOf("."));
+            if (File.Exists(newpath) == true)
+                File.Delete(newpath);
+            File.Copy(sourcefile, newpath);
+            return newpath;
+        }
+        //For click in picture and change size of picture 
+        //برای کلیک روی عکس و تغییر سایز عکس 
+
+        private void pic1_Click(object sender, EventArgs e)
+        {
+            if (pic1.SizeMode == PictureBoxSizeMode.StretchImage)
+            {
+                x = pic1.Region;
+                pic1.SizeMode = PictureBoxSizeMode.AutoSize;
+            }
+            else
+            {
+                pic1.SizeMode = PictureBoxSizeMode.StretchImage;
+                pic1.Region = x;
+
+            }
+            
+        }
+
+        private void pic1_MouseLeave(object sender, EventArgs e)
+        {
+            pic1.SizeMode = PictureBoxSizeMode.StretchImage;
+            pic1.Region = x;
         }
     }
 }
